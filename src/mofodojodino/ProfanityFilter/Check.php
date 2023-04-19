@@ -222,11 +222,11 @@ class Check
      */
     protected function generateProfanityExpression($word, $characterExpressions, $separatorExpression)
     {
-        $expression = '/' . preg_replace(
+        $expression = '/\b' . preg_replace(
                 array_keys($characterExpressions),
                 array_values($characterExpressions),
                 $word
-            ) . '/i';
+            ) . '\b/iu';
 
         return str_replace(self::SEPARATOR_PLACEHOLDER, $separatorExpression, $expression);
     }
